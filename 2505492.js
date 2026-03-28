@@ -21,8 +21,26 @@ function startScanner() {
         function (text) {
             const place = JSON.parse(text);
             showMarkerAt(place.top, place.left);
+
+            // INVENTORY SYSTEM
+
+            document.getElementById("name").textContent =
+                "Name: " + place.name;
+
+            if (place.inStock) {
+                document.getElementById("stock").textContent =
+                    "In store: Yes";
+            } else {
+                document.getElementById("stock").textContent =
+                    "In store: No";
+            }
+
+            document.getElementById("price").textContent =
+                "Price: €" + place.price;
+            
             toggleScanner();
         }
+        
     ).catch(function (err) {
         console.error(err);
     });
